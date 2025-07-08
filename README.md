@@ -1,93 +1,94 @@
+#✈️ Flight Price Prediction – Feature Engineering Project
+Welcome to my project on Feature Engineering using the Flight Price Dataset!
+As a data enthusiast and fresher in the field, this project helped me understand the real-world process of preparing data for machine learning models.
 
-# 🛫 Flight Price Dataset – Feature Engineering
+🎯 Project Goal
+To clean and transform raw flight data and apply feature engineering techniques to make the dataset ready for model building — with a focus on predicting flight ticket prices.
 
-This repository showcases the feature engineering and preprocessing steps applied to a **Flight Price Dataset** to prepare it for predictive modeling. The focus is on cleaning, transforming, and enriching the data for better machine learning performance.
+📌 What I Learned
+✅ Handling missing values
+✅ Dealing with imbalanced data
+✅ Removing outliers
+✅ Encoding categorical data
+✅ Creating new meaningful features
+✅ Preparing a dataset suitable for machine learning
 
----
+📊 Dataset Overview
+The dataset contains flight-related information such as airline, departure time, number of stops, travel class, duration, and price.
 
-## 📌 Objective
+✍️ Final Features Used:
+Feature Name	Description	Type
+Airline	Name of the airline company	Categorical
+Flight	Unique flight number	Categorical
+Source City	City of departure	Categorical
+Departure Time	Grouped departure time (e.g., Morning, Evening)	Categorical
+Stops	Number of stops between source and destination	Categorical
+Arrival Time	Grouped arrival time (e.g., Afternoon, Night)	Categorical
+Destination City	City where the flight lands	Categorical
+Class	Travel class: Business or Economy	Categorical
+Duration	Total time taken by the flight (in hours)	Numerical
+Days Left	Days remaining from booking date to travel date	Numerical
+Price	🎯 Target variable – flight ticket price	Numerical
 
-Prepare the dataset for flight price prediction by performing essential **data cleaning**, **feature engineering**, and **preprocessing** techniques.
+⚙️ Feature Engineering Steps
+1. 📉 Handling Missing Values
+Used logical methods and statistical techniques (mean/mode) to fill missing data.
 
----
+2. 📊 Handling Imbalanced Data
+Applied basic resampling strategies to balance data if needed (for classification use cases).
 
-## 🧩 Dataset Features
+3. 🚫 Outlier Treatment
+Identified and capped/removal of extreme values using:
 
-The final cleaned dataset includes the following features:
+IQR (Interquartile Range)
 
-| Feature              | Description                                        | Type                   |
-| -------------------- | -------------------------------------------------- | ---------------------- |
-| **Airline**          | Name of the airline company                        | Categorical (6 values) |
-| **Flight**           | Unique flight code                                 | Categorical            |
-| **Source City**      | City of departure                                  | Categorical (6 values) |
-| **Departure Time**   | Grouped time of departure (e.g., Morning, Evening) | Categorical (6 bins)   |
-| **Stops**            | Number of stops                                    | Categorical (3 values) |
-| **Arrival Time**     | Grouped time of arrival                            | Categorical (6 bins)   |
-| **Destination City** | City of arrival                                    | Categorical (6 values) |
-| **Class**            | Travel class: Business or Economy                  | Categorical (2 values) |
-| **Duration**         | Total flight duration in hours                     | Continuous             |
-| **Days Left**        | Days between booking and travel                    | Derived Continuous     |
-| **Price**            | 💡 Target variable – flight ticket price           | Continuous             |
+Z-score
 
----
+4. 🔤 Data Encoding
+Converted categorical variables using:
 
-## ⚙️ Feature Engineering Process
+Label Encoding
 
-### 🔍 1. Missing Value Treatment
+One-Hot Encoding (where needed)
 
-* Handled using imputation (mean/mode) or logical inference based on context.
+5. 🛠️ Additional Features
+Created Days Left from date columns
 
-### ⚖️ 2. Imbalanced Data Handling
+Grouped time into bins like "Morning", "Afternoon", etc.
 
-* Techniques like **resampling** or **class weighting** used where necessary.
+🧰 Tools Used
+Python
 
-### 🚫 3. Outlier Detection and Removal
+Pandas, NumPy
 
-* Used **IQR method** and **Z-score** to detect and cap/remove extreme values.
+Scikit-learn
 
-### 🔠 4. Encoding Categorical Features
+Matplotlib, Seaborn
 
-* Applied **One-Hot Encoding** and **Label Encoding** to convert categories into numerical format.
+Jupyter Notebook
 
-### 🧠 5. Other Transformations
+📁 Folder Structure
+sql
+Copy
+Edit
+📦 flight-price-feature-engineering/
+├── data/                  → Dataset files
+├── notebook/              → Jupyter notebook with full workflow
+├── images/                → EDA & processing visuals
+├── README.md              → Project overview
+└── requirements.txt       → Python libraries used
+🚀 What's Next?
+Apply regression models on this dataset
 
-* Extracted new features like `Days Left`, grouped time into bins, and ensured feature consistency.
+Perform hyperparameter tuning
 
----
+Create a dashboard using Power BI or Streamlit
 
-## 🛠️ Tools & Libraries
+🙋‍♂️ About Me
+Hi, I'm Krishna Kumar – an aspiring data analyst and Python learner.
+This project helped me understand how raw data is transformed into machine-learning-ready input.
+Connect with me on LinkedIn or check out my other work on GitHub.
 
-* **Python** (Pandas, NumPy)
-* **Scikit-learn** (Preprocessing, Feature Selection)
-* **Matplotlib / Seaborn** (EDA & Visualization)
-* **Jupyter Notebook** (Development)
+📃 License
+This project is open-source under the MIT License.
 
----
-
-## 📁 Folder Structure
-
-```
-flight-price-feature-engineering/
-│
-├── data/                   → Raw and cleaned datasets
-├── notebooks/              → Jupyter notebooks
-├── scripts/                → Python scripts for preprocessing
-├── visuals/                → Plots and charts
-├── README.md               → Project overview
-└── requirements.txt        → Dependencies
-```
-
-## 👨‍💻 Author
-
-**Krishna Kumar**
-Connect on [LinkedIn](https://linkedin.com) | GitHub: \[your\_github\_username]
-
----
-
-## 📃 License
-
-This project is licensed under the MIT License.
-
----
-
- 
