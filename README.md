@@ -1,101 +1,107 @@
   
-# ✈️ Flight Price Prediction – Feature Engineering Project
+---
 
-Welcome to my project on **Feature Engineering using the Flight Price Dataset**!
-As a data enthusiast and fresher in the field, this project helped me understand the real-world process of preparing data for machine learning models.
+# ✈️ Flight Price Dataset – Feature Engineering Project
+
+This project focuses on **cleaning and transforming flight booking data** to prepare it for building a machine learning model to **predict flight prices**.
+
+As a beginner in data science, I took this opportunity to practice important preprocessing techniques using a real-world dataset.
 
 ---
 
-## 🎯 Project Goal
+## 🎯 Project Objective
 
-To clean and transform raw flight data and apply **feature engineering techniques** to make the dataset ready for model building — with a focus on predicting flight ticket prices.
-
----
-
-## 📌 What I Learned
-
-✅ Handling missing values
-✅ Dealing with imbalanced data
-✅ Removing outliers
-✅ Encoding categorical data
-✅ Creating new meaningful features
-✅ Preparing a dataset suitable for machine learning
+To perform **feature engineering** on flight data in order to extract meaningful features, handle data quality issues, and prepare the dataset for accurate price prediction.
 
 ---
 
-## 📊 Dataset Overview
+## 🧩 Dataset Columns
 
-The dataset contains flight-related information such as airline, departure time, number of stops, travel class, duration, and price.
+Here are the raw columns in the dataset:
 
-### ✍️ Final Features Used:
-
-| Feature Name     | Description                                     | Type        |
-| ---------------- | ----------------------------------------------- | ----------- |
-| Airline          | Name of the airline company                     | Categorical |
-| Flight           | Unique flight number                            | Categorical |
-| Source City      | City of departure                               | Categorical |
-| Departure Time   | Grouped departure time (e.g., Morning, Evening) | Categorical |
-| Stops            | Number of stops between source and destination  | Categorical |
-| Arrival Time     | Grouped arrival time (e.g., Afternoon, Night)   | Categorical |
-| Destination City | City where the flight lands                     | Categorical |
-| Class            | Travel class: Business or Economy               | Categorical |
-| Duration         | Total time taken by the flight (in hours)       | Numerical   |
-| Days Left        | Days remaining from booking date to travel date | Numerical   |
-| Price            | 🎯 Target variable – flight ticket price        | Numerical   |
-
----
-
-## ⚙️ Feature Engineering Steps
-
-### 1. 📉 Handling Missing Values
-
-Used logical methods and statistical techniques (mean/mode) to fill missing data.
-
-### 2. 📊 Handling Imbalanced Data
-
-Applied basic resampling strategies to balance data if needed (for classification use cases).
-
-### 3. 🚫 Outlier Treatment
-
-Identified and capped/removal of extreme values using:
-
-* IQR (Interquartile Range)
-* Z-score
-
-### 4. 🔤 Data Encoding
-
-Converted categorical variables using:
-
-* Label Encoding
-* One-Hot Encoding (where needed)
-
-### 5. 🛠️ Additional Features
-
-* Created `Days Left` from date columns
-* Grouped time into bins like "Morning", "Afternoon", etc.
+| Column Name       | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| `Airline`         | Airline name                                        |
+| `Source`          | City of departure                                   |
+| `Destination`     | City of arrival                                     |
+| `Duration`        | Full travel duration (e.g., 2h 50m)                 |
+| `Total_Stops`     | Number of stops (e.g., non-stop, 1 stop)            |
+| `Additional_Info` | Extra info (e.g., In-flight meal not included)      |
+| `Price`           | 🎯 Target variable: flight ticket price             |
+| `date`            | Travel day (extracted from booking or journey date) |
+| `month`           | Travel month                                        |
+| `year`            | Travel year                                         |
+| `Arrival_hour`    | Extracted hour from arrival time                    |
+| `Arrival_mintue`  | Extracted minute from arrival time                  |
+| `Duration_hour`   | Extracted hours from duration                       |
+| `departure_hour`  | Extracted hour from departure time                  |
+| `departure_min`   | Extracted minute from departure time                |
+| `Duration_min`    | Extracted minutes from duration                     |
 
 ---
 
-## 🧰 Tools Used
+## ⚙️ Feature Engineering Tasks
+
+Here’s what I did step-by-step to prepare the dataset:
+
+### 🧹 1. Handled Missing Values
+
+* Checked each column using `.isnull().sum()` and filled missing values using appropriate logic.
+
+### ⚖️ 2. Treated Imbalanced Data
+
+* Observed class distribution in `Total_Stops` and `Additional_Info`. Applied resampling (if needed).
+
+### 🚫 3. Removed Outliers
+
+* Used **IQR** and **Z-score** to detect outliers in `Price`, `Duration_hour`, and other numerical columns.
+
+### 🔠 4. Encoded Categorical Features
+
+* Converted features like `Airline`, `Source`, `Destination`, `Total_Stops`, and `Additional_Info` using:
+
+  * **Label Encoding**
+  * **One-Hot Encoding** (for models that need it)
+
+### 🧠 5. Created & Transformed Features
+
+* Extracted date parts like `day`, `month`, `year` from datetime
+* Separated `Duration` into `Duration_hour` and `Duration_min`
+* Extracted `Arrival_hour`, `Arrival_mintue`, `departure_hour`, `departure_min`
+* Converted all time columns into numeric format
+
+---
+
+## 📊 Tools & Libraries Used
 
 * Python
-* Pandas, NumPy
-* Scikit-learn
-* Matplotlib, Seaborn
-* Jupyter Notebook
+* Pandas
+* NumPy
+* Matplotlib & Seaborn (for visualization)
+* Scikit-learn (for preprocessing)
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```
-📦 flight-price-feature-engineering/
-├── data/                  → Dataset files
-├── notebook/              → Jupyter notebook with full workflow
-├── images/                → EDA & processing visuals
-├── README.md              → Project overview
-└── requirements.txt       → Python libraries used
+flight-price-feature-engineering/
+│
+├── data/                      → Raw and cleaned datasets
+├── notebook/                  → Jupyter Notebook with all steps
+├── visuals/                   → Charts and graphs for EDA
+├── README.md                  → Project documentation
+└── requirements.txt           → Python package list
 ```
+
+---
+
+## 🧠 What I Learned
+
+* Cleaning real-world messy data
+* Extracting features from text and time columns
+* Handling outliers and categorical variables
+* Preparing a dataset for machine learning use
 
 ---
 
@@ -103,247 +109,9 @@ Converted categorical variables using:
 
 ## 🙋‍♂️ About Me
 
-Hi, I'm **Krishna Kumar** – an aspiring data analyst and Python learner.
-This project helped me understand how raw data is transformed into machine-learning-ready input.
-Connect with me on [LinkedIn](Absolutely! Here's a **GitHub README** tailored for a **fresher-level project** on **Flight Price Dataset Feature Engineering**. It's beginner-friendly, shows clear learning outcomes, and positions you well for interviews or resume reviews.
-
----
-
-# ✈️ Flight Price Prediction – Feature Engineering Project
-
-Welcome to my project on **Feature Engineering using the Flight Price Dataset**!
-As a data enthusiast and fresher in the field, this project helped me understand the real-world process of preparing data for machine learning models.
-
----
-
-## 🎯 Project Goal
-
-To clean and transform raw flight data and apply **feature engineering techniques** to make the dataset ready for model building — with a focus on predicting flight ticket prices.
-
----
-
-## 📌 What I Learned
-
-✅ Handling missing values
-✅ Dealing with imbalanced data
-✅ Removing outliers
-✅ Encoding categorical data
-✅ Creating new meaningful features
-✅ Preparing a dataset suitable for machine learning
-
----
-
-## 📊 Dataset Overview
-
-The dataset contains flight-related information such as airline, departure time, number of stops, travel class, duration, and price.
-
-### ✍️ Final Features Used:
-
-| Feature Name     | Description                                     | Type        |
-| ---------------- | ----------------------------------------------- | ----------- |
-| Airline          | Name of the airline company                     | Categorical |
-| Flight           | Unique flight number                            | Categorical |
-| Source City      | City of departure                               | Categorical |
-| Departure Time   | Grouped departure time (e.g., Morning, Evening) | Categorical |
-| Stops            | Number of stops between source and destination  | Categorical |
-| Arrival Time     | Grouped arrival time (e.g., Afternoon, Night)   | Categorical |
-| Destination City | City where the flight lands                     | Categorical |
-| Class            | Travel class: Business or Economy               | Categorical |
-| Duration         | Total time taken by the flight (in hours)       | Numerical   |
-| Days Left        | Days remaining from booking date to travel date | Numerical   |
-| Price            | 🎯 Target variable – flight ticket price        | Numerical   |
-
----
-
-## ⚙️ Feature Engineering Steps
-
-### 1. 📉 Handling Missing Values
-
-Used logical methods and statistical techniques (mean/mode) to fill missing data.
-
-### 2. 📊 Handling Imbalanced Data
-
-Applied basic resampling strategies to balance data if needed (for classification use cases).
-
-### 3. 🚫 Outlier Treatment
-
-Identified and capped/removal of extreme values using:
-
-* IQR (Interquartile Range)
-* Z-score
-
-### 4. 🔤 Data Encoding
-
-Converted categorical variables using:
-
-* Label Encoding
-* One-Hot Encoding (where needed)
-
-### 5. 🛠️ Additional Features
-
-* Created `Days Left` from date columns
-* Grouped time into bins like "Morning", "Afternoon", etc.
-
----
-
-## 🧰 Tools Used
-
-* Python
-* Pandas, NumPy
-* Scikit-learn
-* Matplotlib, Seaborn
-* Jupyter Notebook
-
----
-
-## 📁 Folder Structure
-
-```
-📦 flight-price-feature-engineering/
-├── data/                  → Dataset files
-├── notebook/              → Jupyter notebook with full workflow
-├── images/                → EDA & processing visuals
-├── README.md              → Project overview
-└── requirements.txt       → Python libraries used
-```
-
----
-
-## 🚀 What's Next?
-
-* Apply regression models on this dataset
-* Perform hyperparameter tuning
-* Create a dashboard using Power BI or Streamlit
-
----
-
-## 🙋‍♂️ About Me
-
-Hi, I'm **Krishna Kumar** – an aspiring data analyst and Python learner.
-This project helped me understand how raw data is transformed into machine-learning-ready input.
-Connect with me on [LinkedIn](Absolutely! Here's a **GitHub README** tailored for a **fresher-level project** on **Flight Price Dataset Feature Engineering**. It's beginner-friendly, shows clear learning outcomes, and positions you well for interviews or resume reviews.
-
----
-
-# ✈️ Flight Price Prediction – Feature Engineering Project
-
-Welcome to my project on **Feature Engineering using the Flight Price Dataset**!
-As a data enthusiast and fresher in the field, this project helped me understand the real-world process of preparing data for machine learning models.
-
----
-
-## 🎯 Project Goal
-
-To clean and transform raw flight data and apply **feature engineering techniques** to make the dataset ready for model building — with a focus on predicting flight ticket prices.
-
----
-
-## 📌 What I Learned
-
-✅ Handling missing values
-✅ Dealing with imbalanced data
-✅ Removing outliers
-✅ Encoding categorical data
-✅ Creating new meaningful features
-✅ Preparing a dataset suitable for machine learning
-
----
-
-## 📊 Dataset Overview
-
-The dataset contains flight-related information such as airline, departure time, number of stops, travel class, duration, and price.
-
-### ✍️ Final Features Used:
-
-| Feature Name     | Description                                     | Type        |
-| ---------------- | ----------------------------------------------- | ----------- |
-| Airline          | Name of the airline company                     | Categorical |
-| Flight           | Unique flight number                            | Categorical |
-| Source City      | City of departure                               | Categorical |
-| Departure Time   | Grouped departure time (e.g., Morning, Evening) | Categorical |
-| Stops            | Number of stops between source and destination  | Categorical |
-| Arrival Time     | Grouped arrival time (e.g., Afternoon, Night)   | Categorical |
-| Destination City | City where the flight lands                     | Categorical |
-| Class            | Travel class: Business or Economy               | Categorical |
-| Duration         | Total time taken by the flight (in hours)       | Numerical   |
-| Days Left        | Days remaining from booking date to travel date | Numerical   |
-| Price            | 🎯 Target variable – flight ticket price        | Numerical   |
-
----
-
-## ⚙️ Feature Engineering Steps
-
-### 1. 📉 Handling Missing Values
-
-Used logical methods and statistical techniques (mean/mode) to fill missing data.
-
-### 2. 📊 Handling Imbalanced Data
-
-Applied basic resampling strategies to balance data if needed (for classification use cases).
-
-### 3. 🚫 Outlier Treatment
-
-Identified and capped/removal of extreme values using:
-
-* IQR (Interquartile Range)
-* Z-score
-
-### 4. 🔤 Data Encoding
-
-Converted categorical variables using:
-
-* Label Encoding
-* One-Hot Encoding (where needed)
-
-### 5. 🛠️ Additional Features
-
-* Created `Days Left` from date columns
-* Grouped time into bins like "Morning", "Afternoon", etc.
-
----
-
-## 🧰 Tools Used
-
-* Python
-* Pandas, NumPy
-* Scikit-learn
-* Matplotlib, Seaborn
-* Jupyter Notebook
-
----
-
-## 📁 Folder Structure
-
-```
-📦 flight-price-feature-engineering/
-├── data/                  → Dataset files
-├── notebook/              → Jupyter notebook with full workflow
-├── images/                → EDA & processing visuals
-├── README.md              → Project overview
-└── requirements.txt       → Python libraries used
-```
-
----
-
-## 🚀 What's Next?
-
-* Apply regression models on this dataset
-* Perform hyperparameter tuning
-* Create a dashboard using Power BI or Streamlit
-
----
-
-## 🙋‍♂️ About Me
-
-Hi, I'm **Krishna Kumar** – an aspiring data analyst and Python learner.
-This project helped me understand how raw data is transformed into machine-learning-ready input.
-Connect with me on [LinkedIn](www.linkedin.com/in/krishna-k-361225277)  
-
----
-
-## 📃 License
-
-This project is open-source under the [MIT License](LICENSE).
-
+Hi, I’m **Krishna Kumar**, a passionate and motivated data science learner. 
+ 
+Connect with me on [LinkedIn](www.linkedin.com/in/krishna-k-361225277) | 
  
 
+ 
